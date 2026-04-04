@@ -176,19 +176,22 @@
       
 
       
+        <div class="article-stats">
+          <span class="word-count">字数: <span id="wordCount">0</span></span>
+          <span class="reading-count">阅读: <span id="readingCount">0</span></span>
+          <span class="like-count">点赞: <span id="likeCount">0</span></span>
+        </div>
         <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
+          <a href="javascript:;" class="page-reward-btn tooltip-top" onclick="toggleLike(this)">
             <div class="tooltip tooltip-east">
             <span class="tooltip-item">
-              赏
+              点赞
             </span>
             <span class="tooltip-content">
               <span class="tooltip-text">
                 <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>感谢您的支持！<i class="icon icon-quo-right"></i></p>
                   <div class="reward-box">
-                    
-                    
                   </div>
                 </span>
               </span>
@@ -546,5 +549,124 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
 
 </div>
   </div>
+<!-- Theme Toggle Button -->
+<div id="theme-toggle" class="theme-toggle">
+  <span class="theme-icon">☀️</span>
+</div>
+
+<script>
+// Dark/Light mode toggle functionality
+document.addEventListener('DOMContentLoaded', function() {
+  // Check for saved theme preference or respect OS preference
+  const savedTheme = localStorage.getItem('theme');
+  const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+  const currentTheme = savedTheme || (prefersDarkScheme.matches ? 'dark' : 'light');
+  
+  document.documentElement.setAttribute('data-theme', currentTheme);
+  updateThemeIcon(currentTheme);
+  
+  // Toggle theme function
+  const themeToggle = document.getElementById('theme-toggle');
+  if (themeToggle) {
+    themeToggle.addEventListener('click', function() {
+      const current = document.documentElement.getAttribute('data-theme');
+      const newTheme = current === 'dark' ? 'light' : 'dark';
+      
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      updateThemeIcon(newTheme);
+    });
+  }
+  
+  // Update icon based on theme
+  function updateThemeIcon(theme) {
+    const icon = document.querySelector('.theme-icon');
+    if (icon) {
+      icon.textContent = theme === 'dark' ? '🌙' : '☀️';
+    }
+  }
+  
+  // Listen for OS theme changes
+  prefersDarkScheme.addListener(function(e) {
+    if (!localStorage.getItem('theme')) {
+      const newTheme = e.matches ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', newTheme);
+      updateThemeIcon(newTheme);
+    }
+  });
+});
+
+// Calculate word count for each article
+function calculateWordCounts() {
+  const articles = document.querySelectorAll('.article-entry');
+  articles.forEach(article => {
+    const text = article.innerText || article.textContent;
+    const wordCount = text.trim() ? text.trim().split(/\s+/).length : 0;
+    
+    // Find the associated word count display element
+    const statsContainer = article.closest('.article').querySelector('.article-stats');
+    if (statsContainer) {
+      const wordCountElement = statsContainer.querySelector('#wordCount');
+      if (wordCountElement) {
+        wordCountElement.textContent = wordCount;
+      }
+    }
+  });
+}
+
+// Initialize reading and like counts from localStorage
+function initializeArticleStats() {
+  const articleElements = document.querySelectorAll('[id^="post-"]');
+  articleElements.forEach(article => {
+    const postId = article.id;
+    const statsContainer = article.querySelector('.article-stats');
+    if (statsContainer) {
+      // Initialize reading count
+      const readingCountElement = statsContainer.querySelector('#readingCount');
+      if (readingCountElement) {
+        let readingCount = localStorage.getItem(`${postId}_reading`) || 0;
+        // Increment reading count when page loads
+        readingCount++;
+        localStorage.setItem(`${postId}_reading`, readingCount);
+        readingCountElement.textContent = readingCount;
+      }
+      
+      // Initialize like count
+      const likeCountElement = statsContainer.querySelector('#likeCount');
+      if (likeCountElement) {
+        const likeCount = localStorage.getItem(`${postId}_likes`) || 0;
+        likeCountElement.textContent = likeCount;
+      }
+    }
+  });
+}
+
+// Toggle like functionality
+function toggleLike(element) {
+  const article = element.closest('[id^="post-"]');
+  if (article) {
+    const postId = article.id;
+    const likeCountElement = article.querySelector('#likeCount');
+    if (likeCountElement) {
+      let likes = parseInt(localStorage.getItem(`${postId}_likes`)) || 0;
+      likes++;
+      localStorage.setItem(`${postId}_likes`, likes);
+      likeCountElement.textContent = likes;
+      
+      // Visual feedback for like
+      element.classList.add('liked');
+      setTimeout(() => {
+        element.classList.remove('liked');
+      }, 500);
+    }
+  }
+}
+
+// Run initialization when page loads
+document.addEventListener('DOMContentLoaded', function() {
+  calculateWordCounts();
+  initializeArticleStats();
+});
+</script>
 </body>
 </html>
