@@ -1,35 +1,80 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Blog</title>
+  <title>个人简历</title>
   <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
-  <!-- Header -->
-  <header class="site-header">
-    <div class="header-inner">
-      <a href="index.html" class="site-title">My Blog</a>
-      <nav class="site-nav">
-        <a href="index.html">Home</a>
-        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme"></button>
-      </nav>
-    </div>
-  </header>
+  <main class="resume">
+    <!-- 姓名 -->
+    <h1 class="name">张三</h1>
 
-  <!-- Main Content -->
-  <main class="container">
-    <div id="post-list" class="post-list">
-      <!-- Posts will be dynamically loaded here -->
+    <!-- 联系方式 -->
+    <div class="contact">
+      <span>邮箱: zhangsan@example.com</span>
+      <span>电话: 138-0000-0000</span>
+      <span>GitHub: github.com/zhangsan</span>
     </div>
+
+    <hr>
+
+    <!-- 个人简介 -->
+    <section>
+      <h2>个人简介</h2>
+      <p>拥有5年开发经验的软件工程师，专注于后端系统设计与分布式架构。熟悉 Java、Python 和 Go，具备大规模高并发系统的实战经验。追求代码质量与工程效率，善于用技术方案解决业务问题。</p>
+    </section>
+
+    <!-- 工作经历 -->
+    <section>
+      <h2>工作经历</h2>
+
+      <div class="experience">
+        <h3>高级后端工程师 | ABC科技有限公司</h3>
+        <p class="date">2023.03 - 至今</p>
+        <ul>
+          <li>负责核心交易系统的架构设计与开发，支撑日均百万级订单</li>
+          <li>主导微服务拆分，将单体应用迁移至 Kubernetes 集群，部署效率提升 60%</li>
+          <li>优化数据库查询性能，核心接口响应时间降低 40%</li>
+        </ul>
+      </div>
+
+      <div class="experience">
+        <h3>后端开发工程师 | XYZ互联网公司</h3>
+        <p class="date">2021.06 - 2023.02</p>
+        <ul>
+          <li>参与用户增长平台开发，支持千万级用户画像与精准推送</li>
+          <li>设计并实现消息队列中间件，保障服务间异步通信的可靠性</li>
+          <li>编写自动化测试脚本，单元测试覆盖率从 30% 提升至 85%</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 技能 -->
+    <section>
+      <h2>技能</h2>
+      <ul>
+        <li>编程语言: Java, Python, Go, JavaScript</li>
+        <li>框架: Spring Boot, Django, Gin</li>
+        <li>数据库: MySQL, PostgreSQL, Redis, MongoDB</li>
+        <li>基础设施: Docker, Kubernetes, AWS, CI/CD</li>
+        <li>其他: Git, Linux, Nginx, Kafka</li>
+      </ul>
+    </section>
+
+    <!-- 教育背景 -->
+    <section>
+      <h2>教育背景</h2>
+      <div class="education">
+        <h3>计算机科学与技术 硕士</h3>
+        <p class="date">某某大学 | 2018.09 - 2021.06</p>
+      </div>
+      <div class="education">
+        <h3>软件工程 学士</h3>
+        <p class="date">某某大学 | 2014.09 - 2018.06</p>
+      </div>
+    </section>
   </main>
-
-  <!-- Footer -->
-  <footer class="site-footer">
-    <p>&copy; 2026 My Blog. Built with Markdown & JavaScript.</p>
-  </footer>
-
-  <script src="./assets/js/main.js"></script>
 </body>
 </html>
