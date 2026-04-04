@@ -1,6 +1,35 @@
 /* ============================================
-   Resume - Minimal Styles
+   Resume - Clean & Minimal Styles
+   With Light/Dark Mode & TOC Sidebar
    ============================================ */
+
+/* --- CSS Variables --- */
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-toc: rgba(255, 255, 255, 0.95);
+  --text-primary: #2d2d2d;
+  --text-secondary: #555555;
+  --text-muted: #777777;
+  --border-color: #e0e0e0;
+  --accent-color: #2563eb;
+  --accent-hover: #1d4ed8;
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --transition-speed: 0.3s;
+}
+
+[data-theme="dark"] {
+  --bg-primary: #1a1a2e;
+  --bg-secondary: #16213e;
+  --bg-toc: rgba(22, 33, 62, 0.95);
+  --text-primary: #e0e0e0;
+  --text-secondary: #b0b0b0;
+  --text-muted: #888888;
+  --border-color: #2d3748;
+  --accent-color: #60a5fa;
+  --accent-hover: #93c5fd;
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
 
 /* --- Reset & Base --- */
 * {
@@ -11,27 +40,151 @@
 
 html {
   font-size: 16px;
+  scroll-behavior: smooth;
 }
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-  background-color: #fff;
-  color: #222;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
   line-height: 1.6;
+  transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
 }
 
-/* --- Resume Container --- */
+/* --- Theme Toggle Button --- */
+.theme-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1000;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow);
+  transition: all var(--transition-speed) ease;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
+  background-color: var(--accent-color);
+  color: white;
+}
+
+.theme-toggle svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* --- TOC Sidebar --- */
+.toc-sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 240px;
+  height: 100vh;
+  background-color: var(--bg-toc);
+  border-left: 1px solid var(--border-color);
+  padding: 5rem 1.25rem 2rem;
+  overflow-y: auto;
+  z-index: 900;
+  transition: transform var(--transition-speed) ease, background-color var(--transition-speed) ease;
+  backdrop-filter: blur(10px);
+}
+
+.toc-sidebar.hidden {
+  transform: translateX(100%);
+}
+
+.toc-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.toc-list {
+  list-style: none;
+}
+
+.toc-list li {
+  margin-bottom: 0.25rem;
+}
+
+.toc-link {
+  display: block;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.toc-link:hover {
+  background-color: var(--bg-secondary);
+  color: var(--accent-color);
+}
+
+.toc-link.active {
+  background-color: var(--accent-color);
+  color: white;
+}
+
+.toc-link.h3 {
+  padding-left: 1.25rem;
+  font-size: 0.8rem;
+}
+
+/* --- TOC Toggle Button (Mobile) --- */
+.toc-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 4rem;
+  z-index: 1000;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow);
+  transition: all var(--transition-speed) ease;
+}
+
+.toc-toggle:hover {
+  transform: scale(1.1);
+  background-color: var(--accent-color);
+  color: white;
+}
+
+/* --- Main Content --- */
 .resume {
-  max-width: 720px;
+  max-width: 750px;
   margin: 0 auto;
-  padding: 3rem 1.5rem;
+  padding: 4rem 1.5rem 4rem 0;
 }
 
 /* --- Name --- */
 .name {
-  font-size: 2rem;
+  font-size: 2.25rem;
   font-weight: 700;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
 }
 
 /* --- Contact --- */
@@ -40,40 +193,50 @@ body {
   flex-wrap: wrap;
   gap: 1rem;
   font-size: 0.9rem;
-  color: #555;
+  color: var(--text-secondary);
   margin-bottom: 1.5rem;
+}
+
+.contact span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
 }
 
 /* --- Divider --- */
 hr {
   border: none;
-  border-top: 1px solid #ddd;
+  border-top: 1px solid var(--border-color);
   margin: 1.5rem 0;
 }
 
 /* --- Sections --- */
 section {
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
 }
 
 section h2 {
-  font-size: 1.35rem;
+  font-size: 1.4rem;
   font-weight: 600;
   margin-bottom: 1rem;
   padding-bottom: 0.4rem;
-  border-bottom: 1px solid #eee;
+  border-bottom: 2px solid var(--border-color);
+  color: var(--text-primary);
+  scroll-margin-top: 5rem;
 }
 
 section h3 {
   font-size: 1.1rem;
   font-weight: 600;
   margin-bottom: 0.25rem;
+  color: var(--text-primary);
+  scroll-margin-top: 5rem;
 }
 
 /* --- Date --- */
 .date {
   font-size: 0.85rem;
-  color: #777;
+  color: var(--text-muted);
   margin-bottom: 0.5rem;
 }
 
@@ -83,26 +246,138 @@ section ul {
 }
 
 section li {
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.4rem;
+  color: var(--text-secondary);
 }
 
 /* --- Paragraphs --- */
 p {
   margin-bottom: 0.75rem;
+  color: var(--text-secondary);
+}
+
+/* --- Experience/Education Blocks --- */
+.experience,
+.education {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px dashed var(--border-color);
+}
+
+.experience:last-child,
+.education:last-child {
+  border-bottom: none;
+}
+
+/* --- Code Blocks --- */
+pre {
+  background-color: var(--bg-secondary);
+  padding: 1rem;
+  border-radius: 6px;
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+
+code {
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  font-size: 0.9em;
+  background-color: var(--bg-secondary);
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+}
+
+pre code {
+  padding: 0;
+  background: none;
+}
+
+/* --- Blockquotes --- */
+blockquote {
+  border-left: 3px solid var(--accent-color);
+  padding-left: 1rem;
+  margin: 1rem 0;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* --- Links --- */
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: var(--accent-hover);
 }
 
 /* --- Responsive --- */
+@media (max-width: 900px) {
+  .toc-sidebar {
+    transform: translateX(100%);
+  }
+
+  .toc-sidebar.visible {
+    transform: translateX(0);
+  }
+
+  .toc-toggle {
+    display: flex;
+  }
+
+  .resume {
+    padding: 4rem 1.25rem;
+  }
+}
+
 @media (max-width: 600px) {
   .resume {
-    padding: 2rem 1rem;
+    padding: 3rem 1rem;
   }
 
   .name {
-    font-size: 1.6rem;
+    font-size: 1.75rem;
   }
 
   .contact {
     flex-direction: column;
     gap: 0.35rem;
+  }
+
+  .theme-toggle {
+    top: 0.75rem;
+    right: 0.75rem;
+    width: 40px;
+    height: 40px;
+  }
+
+  .toc-toggle {
+    right: 3.5rem;
+    width: 40px;
+    height: 40px;
+  }
+
+  .toc-sidebar {
+    width: 200px;
+    padding: 4rem 1rem 1.5rem;
+  }
+}
+
+/* --- Print Styles --- */
+@media print {
+  .theme-toggle,
+  .toc-toggle,
+  .toc-sidebar {
+    display: none !important;
+  }
+
+  .resume {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  body {
+    background: white;
+    color: black;
   }
 }
