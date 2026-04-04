@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,10 +8,10 @@
 </head>
 <body>
   <!-- Theme Toggle Button -->
-  <button id="theme-toggle" class="theme-toggle" aria-label="切换主题"></button>
+  <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme"></button>
 
   <!-- TOC Toggle Button (Mobile) -->
-  <button id="toc-toggle" class="toc-toggle" aria-label="切换目录">
+  <button id="toc-toggle" class="toc-toggle" aria-label="Toggle TOC">
     <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
       <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
     </svg>
@@ -34,111 +34,66 @@
     </div>
 
     <section id="summary">
-      <h2 id="summary-title">个人简介</h2>
-      <p>拥有5年开发经验的软件工程师，专注于后端系统设计与分布式架构。熟悉 Java、Python 和 Go，具备大规模高并发系统的实战经验。追求代码质量与工程效率，善于用技术方案解决业务问题。</p>
+      <h2 id="summary-title">About Me</h2>
+      <p>A passionate researcher and developer focused on deep learning and NLP. Proficient in building and training models with PyTorch, with hands-on experience in large language model applications and intelligent agent frameworks. Committed to bridging cutting-edge AI research with practical engineering solutions.</p>
     </section>
 
-    <!-- 工作经历 -->
-    <section id="experience">
-      <h2 id="experience-title">工作经历</h2>
-
-      <div class="experience">
-        <h3 id="exp1">高级后端工程师 | ABC科技有限公司</h3>
-        <p class="date">2023.03 - 至今</p>
-        <ul>
-          <li>负责核心交易系统的架构设计与开发，支撑日均百万级订单</li>
-          <li>主导微服务拆分，将单体应用迁移至 Kubernetes 集群，部署效率提升 60%</li>
-          <li>优化数据库查询性能，核心接口响应时间降低 40%</li>
-        </ul>
-      </div>
-
-      <div class="experience">
-        <h3 id="exp2">后端开发工程师 | XYZ互联网公司</h3>
-        <p class="date">2021.06 - 2023.02</p>
-        <ul>
-          <li>参与用户增长平台开发，支持千万级用户画像与精准推送</li>
-          <li>设计并实现消息队列中间件，保障服务间异步通信的可靠性</li>
-          <li>编写自动化测试脚本，单元测试覆盖率从 30% 提升至 85%</li>
-        </ul>
-      </div>
-
-      <div class="experience">
-        <h3 id="exp3">初级开发工程师 | DEF软件公司</h3>
-        <p class="date">2018.07 - 2021.05</p>
-        <ul>
-          <li>参与企业ERP系统开发，负责库存管理模块的设计与实现</li>
-          <li>开发内部工具链，提升团队开发效率约 25%</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- 技能 -->
-    <section id="skills">
-      <h2 id="skills-title">技能</h2>
-      <ul>
-        <li><strong>编程语言:</strong> Java, Python, Go, JavaScript, TypeScript</li>
-        <li><strong>框架:</strong> Spring Boot, Django, Gin, Express</li>
-        <li><strong>数据库:</strong> MySQL, PostgreSQL, Redis, MongoDB</li>
-        <li><strong>基础设施:</strong> Docker, Kubernetes, AWS, CI/CD, Terraform</li>
-        <li><strong>中间件:</strong> Kafka, RabbitMQ, Elasticsearch</li>
-        <li><strong>其他:</strong> Git, Linux, Nginx, GraphQL, gRPC</li>
-      </ul>
-    </section>
-
-    <!-- 项目经验 -->
-    <section id="projects">
-      <h2 id="projects-title">项目经验</h2>
-
-      <div class="experience">
-        <h3 id="proj1">分布式订单系统重构</h3>
-        <p class="date">2024.01 - 2024.06</p>
-        <ul>
-          <li>将原有单体订单系统拆分为微服务架构，使用 Saga 模式保证分布式事务一致性</li>
-          <li>引入 CQRS 模式，读写分离使系统吞吐量提升 3 倍</li>
-          <li>技术栈: Spring Cloud, MySQL, Redis, Kafka</li>
-        </ul>
-      </div>
-
-      <div class="experience">
-        <h3 id="proj2">实时数据分析平台</h3>
-        <p class="date">2022.03 - 2022.12</p>
-        <ul>
-          <li>构建基于 Flink 的实时数据处理管道，日处理数据量达 TB 级</li>
-          <li>设计多维度数据聚合方案，支持秒级查询响应</li>
-          <li>技术栈: Flink, Kafka, ClickHouse, Grafana</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- 教育背景 -->
+    <!-- Education -->
     <section id="education">
-      <h2 id="education-title">教育背景</h2>
+      <h2 id="education-title">Education</h2>
       <div class="education">
-        <h3 id="edu1">计算机科学与技术 硕士</h3>
-        <p class="date">某某大学 | 2018.09 - 2021.06</p>
+        <h3 id="edu1">B.Eng. in Computer Science &amp; Technology &nbsp;·&nbsp; Sophomore</h3>
+        <p class="date">University of Electronic Science and Technology of China (UESTC) | 2024.09 – Present</p>
         <ul>
-          <li>研究方向: 分布式系统、云计算</li>
-          <li>发表 SCI 论文 2 篇</li>
-        </ul>
-      </div>
-      <div class="education">
-        <h3 id="edu2">软件工程 学士</h3>
-        <p class="date">某某大学 | 2014.09 - 2018.06</p>
-        <ul>
-          <li>GPA: 3.8/4.0，连续三年获校级奖学金</li>
+          <li>Compiler Technology: 98/100 &nbsp;·&nbsp; Fundamentals of Programming &amp; Algorithms: 99/100 &nbsp;·&nbsp; Computer Systems &amp; Networks: 90/100</li>
         </ul>
       </div>
     </section>
 
-    <!-- 证书与荣誉 -->
-    <section id="certifications">
-      <h2 id="certifications-title">证书与荣誉</h2>
+    <!-- Skills -->
+    <section id="skills">
+      <h2 id="skills-title">Technical Skills</h2>
       <ul>
-        <li>AWS Certified Solutions Architect - Professional</li>
-        <li>CKA (Certified Kubernetes Administrator)</li>
-        <li>公司年度技术创新奖 (2023)</li>
+        <li>Proficient in classic deep learning architectures including CNN, RNN, and Transformer; capable of independently building and training models end-to-end using PyTorch.</li>
+        <li>Familiar with LangChain and similar agentic frameworks; understanding of LLM capabilities in planning, memory, and tool-use.</li>
+        <li>Knowledgeable in RAG pipelines, vector search, and embedding models; foundational understanding of multimodal retrieval.</li>
+        <li>Proficient in Python and C++; experienced with Linux development environments, Git version control, and collaborative research workflows.</li>
       </ul>
     </section>
+
+    <!-- Project Experience -->
+    <section id="projects">
+      <h2 id="projects-title">Project Experience</h2>
+
+      <div class="experience">
+        <h3 id="proj1">ZhiXi: BERT-Based Intelligent Proposal Analysis System <span style="float:right;font-weight:normal;font-size:0.9em;">NLP Algorithm Development</span></h3>
+        <p class="date">2023.06 – 2024.01</p>
+        <p><strong>Overview:</strong> An automated semantic analysis system for large-scale public policy comments and legislative proposals, leveraging deep learning throughout the full pipeline — from web crawling and text preprocessing to model inference. The core module uses a pretrained BERT model to perform high-accuracy sentiment classification, multi-label topic tagging, and constructive suggestion extraction, providing policymakers with a real-time public opinion dashboard.</p>
+        <p><strong>Responsibilities:</strong></p>
+        <ul>
+          <li><strong>Multi-task Model Design:</strong> Loaded bert-base-chinese via Hugging Face and designed a shared-backbone model supporting both three-class sentiment classification and multi-label topic recognition simultaneously.</li>
+          <li><strong>Constructive Suggestion Extraction:</strong> Leveraged BERT's dense contextual embeddings combined with custom rule filters and intent classifiers to surface high-value proposals from large volumes of public comments.</li>
+          <li><strong>Long-document Processing:</strong> Developed a Sliding Window segmentation and result aggregation algorithm to handle lengthy policy proposals, resolving semantic truncation caused by BERT's input length limit.</li>
+        </ul>
+        <p><strong>Technical Highlights:</strong></p>
+        <ul>
+          <li><strong>Robustness under Class Imbalance:</strong> Introduced Focal Loss during fine-tuning with dynamic sample-weight adjustment, improving recall on negative sentiment and contradictory opinion samples by 15%, effectively addressing the extreme data imbalance in civic data.</li>
+          <li><strong>Deep Semantic Awareness:</strong> Compared to TextCNN and other baselines, BERT's bidirectional Transformer architecture better captures irony, negation, and other complex linguistic patterns, achieving over 90% sentiment analysis accuracy.</li>
+          <li><strong>Long-text Semantic Integrity:</strong> Overlapping sliding windows ensure that key claims in lengthy proposals are not lost, improving constructive suggestion identification accuracy by approximately 8%.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Research Plans -->
+    <section id="research">
+      <h2 id="research-title">Research Plans &amp; Future Goals</h2>
+      <ul>
+        <li>Continue exploring efficient fine-tuning methods (e.g., LoRA, Adapter) to reduce the cost of adapting large language models to domain-specific tasks.</li>
+        <li>Investigate multimodal learning approaches that combine text and structured data for richer representation in public policy analytics.</li>
+        <li>Plan to extend the proposal analysis system into a production-grade agentic pipeline integrating retrieval-augmented generation (RAG) for real-time knowledge grounding.</li>
+      </ul>
+    </section>
+
   </main>
 
   <script src="./assets/js/script.js"></script>
