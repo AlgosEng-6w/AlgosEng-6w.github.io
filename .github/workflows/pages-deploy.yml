@@ -10,6 +10,9 @@ permissions:
   pages: write
   id-token: write
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true   # ← 消除 Node.js 20 警告
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -20,16 +23,15 @@ jobs:
           fetch-depth: 0
 
       - name: Setup Pages
-        uses: actions/configure-pages@v5        # ← 升级 v4→v5，消除警告
+        uses: actions/configure-pages@v5
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: lts/*
-          cache: "npm"                          # ← 加缓存，加速后续构建
 
       - name: Build JS assets
-        run: npm ci --include=dev && npm run build:js   # ← 关键修复
+        run: npm install --include=dev && npm run build:js   # ← 改回 install
 
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
