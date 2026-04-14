@@ -28,10 +28,12 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: lts/*
+          node-version: 20
 
       - name: Build JS assets
-        run: npm install --include=dev && npm run build:js   # ← 改回 install
+        run: npm install --include=dev && npm run build:js
+        env:
+          HUSKY: 0
 
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
