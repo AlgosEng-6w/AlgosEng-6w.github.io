@@ -20,15 +20,16 @@ jobs:
           fetch-depth: 0
 
       - name: Setup Pages
-        uses: actions/configure-pages@v4
+        uses: actions/configure-pages@v5        # ← 升级 v4→v5，消除警告
 
-      - name: Setup Node.js          # ← 新增
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: lts/*
+          cache: "npm"                          # ← 加缓存，加速后续构建
 
-      - name: Build JS assets        # ← 新增
-        run: npm install && npm run build:js
+      - name: Build JS assets
+        run: npm ci --include=dev && npm run build:js   # ← 关键修复
 
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
