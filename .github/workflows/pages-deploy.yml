@@ -31,7 +31,9 @@ jobs:
           node-version: 20
 
       - name: Build JS assets
-        run: npm install --include=dev && npm run build:js
+        run: |
+          npm install --include=dev --ignore-scripts
+          npm run build:js
         env:
           HUSKY: 0
 
