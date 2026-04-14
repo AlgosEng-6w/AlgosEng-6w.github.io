@@ -2,7 +2,7 @@ name: "Build and Deploy"
 on:
   push:
     branches:
-      - main  # 确保这里监听的是 main 分支
+      - main
   workflow_dispatch:
 
 permissions:
@@ -21,6 +21,14 @@ jobs:
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
+
+      - name: Setup Node.js          # ← 新增
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+
+      - name: Build JS assets        # ← 新增
+        run: npm install && npm run build
 
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
